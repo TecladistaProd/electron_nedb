@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="src\bulma.min.css">
+    <style>
+        * {
+            cursor: default;
+            user-select: none;
+            overflow: hidden;
+        }
+        body, html{
+            width: 100%;
+            height: 100%;
+        }
+        .cont{
+            width: 100%;
+            height: 100%;
+            justify-content: center;
+            flex-flow:column nowrap;
+            align-items: center;
+            display: flex;
+        }
+        input:not([type=button]),
+        textarea {
+            cursor: text;
+        }
+        .label{
+            margin:0 auto;
+            width: 75vw;
+        }
+        .label:not(.input){
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="cont">
+        <label class="label">
+            Nome do Campo Adicional
+            <input type="text" class="input" placeholder="Nome do campo"/>
+        </label>
+        <label class="label">
+            Informação do Campo
+            <input type="text" class="input" placeholder="Informação do Campo" />
+        </label>
+        <button class="is-primary button">
+            Adicionar
+        </button>
+    </div>
+    <script>
+        const { ipcRenderer } = require('electron')
+        window.onload = () =>{
+            document.querySelectorAll('input')[1].addEventListener('keyup', e=>{
+                if (e.keycode === 13 || e.which === 13)
+                    document.querySelector('button').click()
+            })
+            document.querySelector('button').addEventListener('click', e=>{
+                let nome = document.querySelectorAll('input')[0].value
+                let info = document.querySelectorAll('input')[1].value
+                let obj = {
+                    nome,
+                    info
+                }
+                ipcRenderer.send('addCampo', obj)
+            })
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Minha Lista Telefônica</title>
+    <link rel="stylesheet" href="src\bulma.min.css">
+    <style>
+        *{
+            cursor: default;
+            user-select:none;
+        }
+        input:not([type=button]), textarea{
+            cursor: text;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <section class="section">
+            <form class="box">
+                <span class="has-text-centered"><h1 class="subtitle is-3">Lista Telefônica</h1></span>
+                <span>
+                    <label class="label">
+                        Nome
+                        <input type="text" class="input" placeholder="Nome do Contato" name="nome"/>
+                    </label>
+                    <label class="label">
+                        Telefone Fixo
+                        <input type="text" class="input" placeholder="Telefone Fixo do Contato" name="telefone"/>
+                    </label>
+                    <label class="label">
+                        Celular
+                        <input type="text" class="input" placeholder="Celular do Contato"  name="celular"/>
+                    </label>
+                    <label class="label">
+                        Endereço
+                        <input type="text" class="input" placeholder="Endereço do Contato"  name="endereco"/>
+                    </label>
+                </span>
+                <br/>
+                <button class="button is-link">Adicionar</button>
+                <button type="reset" class="button is-danger">Limpar</button>
+            </form>
+            <br/><br/>
+            <div class="contatos"></div>
+        </section>
+    </div>
+    <script src="src\index.js"></script>
+</body>
+</html>

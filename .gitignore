@@ -1,0 +1,5 @@
+/backup
+/banco
+/node_modules
+/release-builds
+package-lock.json
